@@ -9,7 +9,7 @@ import busio
 from adafruit_pn532.adafruit_pn532 import MIFARE_CMD_AUTH_B
 from adafruit_pn532.i2c import PN532_I2C
 import Adafruit_PN532 as PN532
-#from adafruit_pn532.spi import PN532_SPI
+from adafruit_pn532.spi import PN532_SPI
 #from adafruit_pn532.uart import PN532_UART
 
 #These imports aren't needed for NFC
@@ -22,13 +22,9 @@ import pickledb
 endpoint = "localhost:3000" #where to send pings
 delay = 0.1 #seconds, delay between scans
 
-# GPIO 18, pin 12
 CS   = 21
-# GPIO 23, pin 16
 MOSI = 12
-# GPIO 24, pin 18
 MISO = 13
-# GPIO 25, pin 22
 SCLK = 14
 
 
@@ -37,9 +33,6 @@ SCLK = 14
 
 # Non-hardware reset/request with I2C
 #pn532 = PN532_I2C(i2c, debug=False)
-pn532 = PN532.PN532(cs=CS, sclk=SCLK, mosi=MOSI, miso=MISO)
-pn532.begin()
-pn532.SAM_configuration()
 
 # With I2C, we recommend connecting RSTPD_N (reset) to a digital pin for manual
 # harware reset
@@ -49,10 +42,10 @@ pn532.SAM_configuration()
 #req_pin = DigitalInOut(board.D12)
 #pn532 = PN532_I2C(i2c, debug=False, reset=reset_pin, req=req_pin)
 
-# SPI connection:
-#spi = busio.SPI(board.SCK, board.MOSI, board.MISO)
-#cs_pin = DigitalInOut(board.D5)
-#pn532 = PN532_SPI(spi, cs_pin, debug=False)
+#SPI connection:
+spi = busio.SPI(board.SCK, board.MOSI, board.MISO)
+cs_pin = DigitalInOut(board.D5)
+pn532 = PN532_SPI(spi, cs_pin, debug=False)
 
 # UART connection
 #uart = busio.UART(board.TX, board.RX, baudrate=115200, timeout=100)

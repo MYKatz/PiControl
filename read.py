@@ -33,7 +33,7 @@ SCLK = 25
 
 
 # I2C connection:
-i2c = busio.I2C(board.SCL, board.SDA)
+#i2c = busio.I2C(board.SCL, board.SDA)
 
 # Non-hardware reset/request with I2C
 #pn532 = PN532_I2C(i2c, debug=False)

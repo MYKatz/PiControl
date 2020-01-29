@@ -21,3 +21,7 @@ I think the bands we're using follow the Mifare standard, so the code is impleme
 
 pip install package && pip freeze > requirements.txt
 
+## Connecting to the raspberry pi
+
+- Be on the same internet connection as the pi
+- Use instructions here https://itsfoss.com/how-to-find-what-devices-are-connected-to-network-in-ubuntu/ to scan for devices on the network. The pi will be called "raspberrypi"

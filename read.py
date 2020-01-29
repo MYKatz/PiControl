@@ -23,13 +23,13 @@ endpoint = "localhost:3000" #where to send pings
 delay = 0.1 #seconds, delay between scans
 
 # GPIO 18, pin 12
-CS   = 18
+CS   = 21
 # GPIO 23, pin 16
-MOSI = 23
+MOSI = 12
 # GPIO 24, pin 18
-MISO = 24
+MISO = 13
 # GPIO 25, pin 22
-SCLK = 25
+SCLK = 14
 
 
 # I2C connection:

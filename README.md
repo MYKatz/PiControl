@@ -29,3 +29,5 @@ pip install package && pip freeze > requirements.txt
 ## Rpi stuff
 
 Make sure to enable SPI!! sudo raspi-config nonint do_spi 0
+
+Add max_usb_current=1 to /boot/config.txt

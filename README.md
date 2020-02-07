@@ -25,3 +25,7 @@ pip install package && pip freeze > requirements.txt
 
 - Be on the same internet connection as the pi
 - Use instructions here https://itsfoss.com/how-to-find-what-devices-are-connected-to-network-in-ubuntu/ to scan for devices on the network. The pi will be called "raspberrypi"
+
+## Rpi stuff
+
+Make sure to enable SPI!! sudo raspi-config nonint do_spi 0

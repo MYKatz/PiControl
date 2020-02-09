@@ -58,13 +58,15 @@ while True: #always be readin'
 
     buffer = reader.read(struct.calcsize(struct_format))
     (tv_sec, tv_usec, type, code, value) = struct.unpack(struct_format, buffer)
-    print(tv_sec, tv_usec, type, code, value)
+    #print(tv_sec, tv_usec, type, code, value)
     
-    if type == 4: # keypress type for yarongtech scanner
+    if type == 1: # keypress type for yarongtech scanner
         if code == 28:
             #enter
             print(scannedCode)
-        else:
+            #do more stuff
+            scannedCode = ""
+        elif value == 1:
             scannedCode += str(scancodes[code])
 
 

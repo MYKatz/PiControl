@@ -6,6 +6,10 @@ import serial
 
 import sys
 
+import struct
+
+struct_format = "LI0LHHI"
+
 reader = open('/dev/input/event0','rb')
 
 endpoint = "http://localhost:3000" #where picontrol server is hosted
@@ -50,7 +54,9 @@ scancodes = {
 
 while True: #always be readin'
 
-    buffer = reader.read(1)
+    buffer = reader.read(struct.calcsize(struct_format))
+    (tv_sec, tv_usec, type, code, value) = struct.unpack(format, data)
+    print(tv_sec, tv_usec, type, code, value)
     for c in buffer:
         if c > 0:
             if c == 28:

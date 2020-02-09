@@ -24,26 +24,41 @@ else:
 
 code = ""
 
+'''
+keys = {
+    2: "1",
+    3: "2",
+    4: "3",
+    5: "4",
+    6: "5",
+    7: "6",
+    8: "7",
+    9: "8",
+    10: 
+}
+'''
+
+scancodes = {
+    # Scancode: ASCIICode
+    0: None, 1: u'ESC', 2: u'1', 3: u'2', 4: u'3', 5: u'4', 6: u'5', 7: u'6', 8: u'7', 9: u'8',
+    10: u'9', 11: u'0', 12: u'-', 13: u'=', 14: u'BKSP', 15: u'TAB', 16: u'q', 17: u'w', 18: u'e', 19: u'r',
+    20: u't', 21: u'y', 22: u'u', 23: u'i', 24: u'o', 25: u'p', 26: u'[', 27: u']', 28: u'CRLF', 29: u'LCTRL',
+    30: u'a', 31: u's', 32: u'd', 33: u'f', 34: u'g', 35: u'h', 36: u'j', 37: u'k', 38: u'l', 39: u';',
+    40: u'"', 41: u'`', 42: u'LSHFT', 43: u'\\', 44: u'z', 45: u'x', 46: u'c', 47: u'v', 48: u'b', 49: u'n',
+    50: u'm', 51: u',', 52: u'.', 53: u'/', 54: u'RSHFT', 56: u'LALT', 100: u'RALT'
+}
+
 while True: #always be readin'
 
     buffer = fp.read(1)
     for c in buffer:
         if c > 0:
-            print(c)
-            if c == 30 : code = code + '1'
-            elif c == 31 : code = code + '2'
-            elif c == 32 : code = code + '3'
-            elif c == 33 : code = code + '4'
-            elif c == 34 : code = code + '5'
-            elif c == 35 : code = code + '6'
-            elif c == 36 : code = code + '7'
-            elif c == 37 : code = code + '8'
-            elif c == 38 : code = code + '9'
-            elif c == 39 : code = code + '0'
-            elif c == 40 :
+            if c == 28:
                 print('code:' + code) # debug
 
                 code = ''
+            elif c in scancodes:
+                code = code + scancodes[c]
 
     # Try again if no card is available.
     '''

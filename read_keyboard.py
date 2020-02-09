@@ -50,7 +50,7 @@ scancodes = {
 
 while True: #always be readin'
 
-    buffer = fp.read(1)
+    buffer = reader.read(1)
     for c in buffer:
         if c > 0:
             if c == 28:

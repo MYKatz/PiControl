@@ -4,6 +4,9 @@ import requests
 
 import serial
 
+import sys
+
+sys.stdin = open('/dev/input/event0','rb')
 #import pickledb
 
 #Environment vars
@@ -13,7 +16,7 @@ log = open("MyFile.txt","a")
 
 pi_address = str(uuid.getnode()) #48-bit integer string, Mac address
 
-ser = serial.Serial('/dev/ttyUSB4',19200, timeout = 5)
+#ser = serial.Serial('/dev/input/event0',19200, timeout = 5)
 
 '''
 register = requests.post(endpoint + "/api/pis/register/" + pi_address)
@@ -25,8 +28,10 @@ else:
 
 while True: #always be readin'
 
-    nfc_uid = ser.readline() #input("card uid: ")
-
+    nfc_uid = input("card uid: ")
+    print("----uid-----")
+    print(nfc_uid.decode("ascii"))
+    print("---end uid ----")
     log.write(nfc_uid)
 
     # Try again if no card is available.

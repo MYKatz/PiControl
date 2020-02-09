@@ -52,21 +52,23 @@ scancodes = {
     50: u'm', 51: u',', 52: u'.', 53: u'/', 54: u'RSHFT', 56: u'LALT', 100: u'RALT'
 }
 
+
+scannedCode = ""
 while True: #always be readin'
 
     buffer = reader.read(struct.calcsize(struct_format))
     (tv_sec, tv_usec, type, code, value) = struct.unpack(struct_format, buffer)
     print(tv_sec, tv_usec, type, code, value)
-    '''
-    for c in buffer:
-        if c > 0:
-            if c == 28:
-                print('code:' + code) # debug
+    
+    if type == 4: # keypress type for yarongtech scanner
+        if code == 28:
+            #enter
+            print(scannedCode)
+        else:
+            scannedCode += str(scancodes[code])
 
-                code = ''
-            elif c in scancodes:
-                code = code + scancodes[c]
-    '''
+
+
     # Try again if no card is available.
     '''
     if nfc_uid is not None:

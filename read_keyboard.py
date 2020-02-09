@@ -5,42 +5,47 @@ import requests
 import serial
 
 import sys
+import os
 
 import struct
+
+import RPi.GPIO as GPIO
 
 struct_format = "LI0LHHI"
 
 reader = open('/dev/input/event0','rb')
 
 endpoint = "http://localhost:3000" #where picontrol server is hosted
+if os.environ.get("API_ENDPOINT"):
+    endpoint = os.environ.get("API_ENDPOINT")
 
-log = open("MyFile.txt","a") 
+##Rpi i/o stuff
+
+GPIO.cleanup()
+
+LED_PIN = 18
+
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(LED_PIN, GPIO.OUT)
+
+def blink():
+    GPIO.output(LED_PIN, GPIO.HIGH)
+    time.sleep(0.2)
+    GPIO.output(LED_PIN, GPIO.LOW)
+
+
+
+log = open("log.txt","a") 
 
 pi_address = str(uuid.getnode()) #48-bit integer string, Mac address
 
-'''
+
 register = requests.post(endpoint + "/api/pis/register/" + pi_address)
 if register.status_code == 200:
     print("pi is registered :)")
 else:
     raise Exception("failed to register pi -- please restart")
-'''
 
-code = ""
-
-'''
-keys = {
-    2: "1",
-    3: "2",
-    4: "3",
-    5: "4",
-    6: "5",
-    7: "6",
-    8: "7",
-    9: "8",
-    10: 
-}
-'''
 
 scancodes = {
     # Scancode: ASCIICode
@@ -64,20 +69,20 @@ while True: #always be readin'
         if code == 28:
             #enter
             print(scannedCode)
-            #do more stuff
+
+            log.write(str(scannedCode) + "\n")
+
+            sendReq = requests.post("%s/api/scanticket/%s?serial=%s" % (endpoint, pi_address, nfc_uid))
+            if sendReq.status_code != 200:
+                print("something went wrong")
+
             scannedCode = ""
+
+            #TODO: maybe make this run concurrently so it doesn't block the main loop
+            #But this is relatively low priority I think cause 
+            blink() 
+
         elif value == 1:
             scannedCode += str(scancodes[code])
 
-
-
-    # Try again if no card is available.
-    '''
-    if nfc_uid is not None:
-
-        sendReq = requests.post("%s/api/scanticket/%s?serial=%s" % (endpoint, pi_address, nfc_uid))
-        if sendReq.status_code != 200:
-            print("something went wrong")
-
-        #TODO: do something with the cube's colors -- tooodooo
-    '''
+GPIO.cleanup()

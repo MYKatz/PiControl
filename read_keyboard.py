@@ -55,8 +55,9 @@ scancodes = {
 while True: #always be readin'
 
     buffer = reader.read(struct.calcsize(struct_format))
-    (tv_sec, tv_usec, type, code, value) = struct.unpack(format, data)
+    (tv_sec, tv_usec, type, code, value) = struct.unpack(struct_format, buffer)
     print(tv_sec, tv_usec, type, code, value)
+    '''
     for c in buffer:
         if c > 0:
             if c == 28:
@@ -65,7 +66,7 @@ while True: #always be readin'
                 code = ''
             elif c in scancodes:
                 code = code + scancodes[c]
-
+    '''
     # Try again if no card is available.
     '''
     if nfc_uid is not None:

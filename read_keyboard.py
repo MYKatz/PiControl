@@ -2,8 +2,6 @@ import time
 import uuid
 import requests
 
-import serial
-
 import sys
 import os
 

@@ -65,6 +65,9 @@ while True: #always be readin'
     
     if type == 1: # keypress type for yarongtech scanner
         if code == 28:
+            if len(scannedCode) < 4: #hacky fix for random enters after scanning card
+                scannedCode = ""
+                continue
             #enter
             print(scannedCode)
 

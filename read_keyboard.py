@@ -72,7 +72,7 @@ while True: #always be readin'
 
             log.write(str(scannedCode) + "\n")
 
-            sendReq = requests.post("%s/api/scanticket/%s?serial=%s" % (endpoint, pi_address, nfc_uid))
+            sendReq = requests.post("%s/api/scanticket/%s?serial=%s" % (endpoint, pi_address, scannedCode))
             if sendReq.status_code != 200:
                 print("something went wrong")
 

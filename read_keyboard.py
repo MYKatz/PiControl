@@ -15,13 +15,13 @@ struct_format = "LI0LHHI"
 
 reader = open('/dev/input/event0','rb')
 
-endpoint = "http://localhost:3000" #where picontrol server is hosted
+endpoint = "http://138.68.238.127/" #where picontrol server is hosted
 if os.environ.get("API_ENDPOINT"):
     endpoint = os.environ.get("API_ENDPOINT")
 
 ##Rpi i/o stuff
 
-GPIO.cleanup()
+#GPIO.cleanup()
 
 LED_PIN = 18
 

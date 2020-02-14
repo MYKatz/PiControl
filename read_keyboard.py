@@ -13,7 +13,7 @@ struct_format = "LI0LHHI"
 
 reader = open('/dev/input/event0','rb')
 
-endpoint = "http://138.68.238.127/" #where picontrol server is hosted
+endpoint = "https://picontrol.treehacks.com/" #where picontrol server is hosted
 if os.environ.get("API_ENDPOINT"):
     endpoint = os.environ.get("API_ENDPOINT")
 

@@ -39,6 +39,11 @@ pi_address = str(uuid.getnode()) #48-bit integer string, Mac address
 
 
 register = requests.post(endpoint + "/api/pis/register/" + pi_address)
+
+while register.status_code != 200:
+    register = requests.post(endpoint + "/api/pis/register/" + pi_address)
+    time.sleep(15)
+
 if register.status_code == 200:
     print("pi is registered :)")
 else:

@@ -46,8 +46,6 @@ while register.status_code != 200:
 
 if register.status_code == 200:
     print("pi is registered :)")
-else:
-    raise Exception("failed to register pi -- please restart")
 
 
 scancodes = {

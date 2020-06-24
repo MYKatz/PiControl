@@ -1,33 +1,3 @@
-# Pi
+# PiControl
 
-Software to run on raspberry Pis!!
-
-I think the bands we're using follow the Mifare standard, so the code is implemented to use that. If you're using NTAG2xx or something else this might not work for you and some things may need to be changed.
-
-## Things to consider
-
-- What to do when can't connect to internet
-    - Some sort of exponential decay/message queue thing...
-    - But what sort of feedback do we give the user - yellow light??
-- Updating settings
-    - We want the pi to constantly be polling the web server to get new settings, etc.
-    - Or do we? I guess most core settings will be on the server itself
-    - Might still be necessary for stuff that has to do with hardware (ie light color.. etc)
-    - If we are implementing this, will need to do it in a way that doesn't interrupt the main thread; check out threading
-- Storing settings
-    - Will be using pickleDB, a lightweight key-val store
-
-## Installing stuff
-
-pip install package && pip freeze > requirements.txt
-
-## Connecting to the raspberry pi
-
-- Be on the same internet connection as the pi
-- Use instructions here https://itsfoss.com/how-to-find-what-devices-are-connected-to-network-in-ubuntu/ to scan for devices on the network. The pi will be called "raspberrypi"
-
-## Rpi stuff
-
-Make sure to enable SPI!! sudo raspi-config nonint do_spi 0
-
-Add max_usb_current=1 to /boot/config.txt
+Python scripts to be run on wifi-enabled Raspberry Pi's for TreeHack's Picontrol system. Please refer to [docs.treehacks.com](https://docs.treehacks.com/) for up-to-date information.

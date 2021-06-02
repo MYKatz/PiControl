@@ -281,7 +281,7 @@ TwitterSearch==1.0.2
 umap-learn==0.3.10
 unicodecsv==0.14.1
 Unidecode==1.1.1
-urllib3==1.24.1
+urllib3==1.26.5
 visdom==0.1.8.9
 w3lib==1.21.0
 wcwidth==0.1.7

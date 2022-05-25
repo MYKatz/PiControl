@@ -190,7 +190,7 @@ pyflakes==2.1.1
 pyftdi==0.42.2
 Pygments==2.3.1
 PyHamcrest==1.9.0
-PyJWT==1.7.1
+PyJWT==2.4.0
 pylint==2.3.1
 pymessenger==0.0.7.0
 pymessenger2==3.1.0

@@ -276,7 +276,7 @@ tornado==6.0.3
 tqdm==4.31.1
 traitlets==4.3.2
 tweepy==3.7.0
-Twisted==19.10.0
+Twisted==22.4.0
 TwitterSearch==1.0.2
 umap-learn==0.3.10
 unicodecsv==0.14.1
